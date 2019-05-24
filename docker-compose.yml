@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongovol:/data/db
+    networks:
+      - cfts
+
+  backend:
+    image: cfts-backend
+    build:
+      context: ./backend
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo
+    networks:
+      - cfts
+
+  ui:
+    image: cfts-ui
+    build:
+      context: ./ui
+    ports:
+      - 4200:4200
+    depends_on:
+      - backend
+    networks:
+      - cfts
+
+networks:
+  cfts:
+
+volumes:
+  mongovol:

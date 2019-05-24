@@ -1,0 +1,89 @@
+<div class="example-stepper">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your name and role</ng-template>
+        <mat-form-field class="account-name-role">
+          <input matInput placeholder="Username" [formControl]="account" required>
+        </mat-form-field>
+
+        <mat-form-field class="account-name-role">
+          <mat-select placeholder="Choose a role" class="role">
+            <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+        <div>
+          <button mat-button matStepperNext [disabled]="account.invalid">Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup">
+
+        <ng-template matStepLabel>Fill out your e-mail</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="E-mail" [formControl]="email" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext [disabled]="email.invalid">Next</button>
+            </div>
+
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+
+            <ng-template matStepLabel>Fill out your password</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Password" [formControl]="password" type="password" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext [disabled]="password.invalid">Next</button>
+            </div>
+
+        </mat-step>
+        <mat-step [stepControl]="fourthFormGroup">
+
+            <ng-template matStepLabel>Choose your experience level</ng-template>
+            <mat-radio-group class="example-radio-group" [(ngModel)]="experience">
+                <mat-radio-button class="example-radio-button" *ngFor="let e of experiences" [value]="e">
+                    {{e}}
+                  </mat-radio-button>
+              </mat-radio-group>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext [disabled]="password.invalid">Next</button>
+            </div>
+
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          You are done now.
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="submit()">Sign up</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+</div>
+  <!--<div class="example-container">
+          <mat-form-field for="username" >
+
+            <input matInput placeholder="Account" [formControl]="account" required>
+            <mat-error *ngIf="account.invalid">{{getErrorMessageAccount()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Enter your email" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field >
+
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessagePassword()}}</mat-error>
+          </mat-form-field>
+
+          <button mat-button [disabled]="email.invalid || account.invalid  || password.invalid" (click)="submit()">Submit</button>
+  </div>
+-->

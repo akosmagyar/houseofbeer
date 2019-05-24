@@ -1,0 +1,33 @@
+
+  <mat-progress-bar *ngIf="progress"
+  [color]="colour"
+  [mode]="mode"></mat-progress-bar>
+
+  <div class="example-container" >
+
+  <mat-form-field >
+    
+    <input matInput placeholder="Account" [formControl]="account" required id="userName">
+    <mat-error *ngIf="account.invalid">{{getErrorMessageAccount()}}</mat-error>
+  </mat-form-field>
+  
+
+<br/>
+
+  <mat-form-field >
+            
+    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+    <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+  </mat-form-field>
+ 
+    
+   <!--<mat-progress-spinner *ngIf="progress"
+   [color]="colour"
+   [mode]="mode"
+   ></mat-progress-spinner>-->
+   <br/>
+  <button mat-button (click)="submit()">Submit</button>
+</div>
+
+
+

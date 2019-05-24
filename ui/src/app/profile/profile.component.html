@@ -1,0 +1,39 @@
+<div>
+  <mat-card>
+  <h3>Profile</h3>
+  <mat-list>
+      <mat-list-item>Username: {{username}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>E-mail: {{email}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Role: {{role}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Experience points: {{xp}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Level: {{level}}</mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
+
+<div>
+    <mat-card>
+    <h3>My brewings</h3>
+    <mat-list>
+        <mat-accordion *ngFor="let q of brewings">
+
+            <mat-expansion-panel (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+            <mat-panel-title id="brewingName">
+                {{q.title}}
+            </mat-panel-title>
+
+            </mat-expansion-panel-header>
+                {{q.textArea}}
+                <a [routerLink]="['/game']" [queryParams]="{id: q.id, name: q.title, story: q.textArea, level: q.level}" id="readMoreButton">Read more...</a>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </mat-list>
+    </mat-card>
+</div>
