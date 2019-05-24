@@ -11,7 +11,7 @@ Navigate to root folder of the project then issue:
 docker-compose up -d
 ```
 This should start up our containers in the background after our images for backend and UI are built, then 
-you can access the application at [http://localhost:8080](http://localhost:8080).
+you can access the application at [http://localhost:4200](http://localhost:4200).
 
 The same command can be used for redeploying a new image version.
 Of course, you have to trigger a rebuild beforehand:
